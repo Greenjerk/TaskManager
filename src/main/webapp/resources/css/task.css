@@ -1,0 +1,89 @@
+html, body {
+    height: 100%;
+}
+
+div.container {
+    min-height: 100%;
+    padding-bottom: 110px;
+    min-width: 940px;
+}
+
+div.footer {
+    height: 100px;
+    margin-top: -100px;
+}
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
+}
+
+.autocomplete-suggestion {
+    padding: 5px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 22px
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: bold;
+    color: #3399FF;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.errorblock {
+    color: #000;
+    background-color: #ffEEEE;
+    border: 3px solid #ff0000;
+    padding: 8px;
+    margin: 16px;
+}
+
+.accordion-group {
+    margin-bottom: 1em;
+}
+
+.accordion-inner {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+inline.style {
+    margin-top: 3em
+}
+
+#nav_lang {
+    text-align: right;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+.avatar_profile {
+    border: 4px solid;
+    margin-top: 1em;
+}
+
+#task_info {
+    display: inline-block;
+    text-align: left;
+    margin-left: 1em;
+    margin-right: 1em
+}
+
+#create_head {
+    max-width: 730px;
+}
+
+#header {
+    margin-top: 15px;
+    text-align: center;
+    min-width: 1000px
+}

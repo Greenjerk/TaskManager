@@ -1,0 +1,53 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<div class="container">
+
+    <c:forEach var="task" items="${tasks}">
+
+        <div class="form-narrow">
+            <c:if test="${task.author.username == pageContext['request'].userPrincipal.name}">
+                <div class="task panel">
+                    <a href="/user/task/${task.id}/edit" class="btn btn-primary">
+                        <spring:message code="label.edit"/></a>
+                    <a href="/user/task/${task.id}/delete" class="btn btn-danger">
+                        <spring:message code="label.delete"/></a>
+                </div>
+            </c:if>
+            <a href="/general/task/${task.id}" class="btn-group">
+                <div id="task_info">
+                    <h4>${task.title}</h4>
+                    <p>${task.description}</p>
+                </div>
+            </a>
+
+            <div>
+                <strong><spring:message code="label.users"/>:</strong>
+                <c:forEach var="user" items="${task.users}">
+                    <small>${user.username}</small>
+                </c:forEach>
+                <br/>
+            </div>
+        </div>
+    </c:forEach>
+
+</div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(document).click(function(){
+            var scrt = $(document).scrollTop();
+            $.cookies.set("scroll", scrt);
+        });
+    });
+
+    $(document).ready(function(){
+        if($.cookies.get("scroll")) {
+            var scrt = $.cookies.get("scroll");
+            $(document).scrollTop(scrt);
+        }
+    });
+</script>

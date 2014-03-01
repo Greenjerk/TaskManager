@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="baseTemplate" template="/WEB-INF/views/skeleton/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/skeleton/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/skeleton/footer.jsp" />
+	</definition>
+
+	<definition name="anonymous/login" extends="baseTemplate">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/views/anonymous/login.jsp" />
+	</definition>
+
+    <definition name="anonymous/register" extends="baseTemplate">
+        <put-attribute name="title" value="Register" />
+        <put-attribute name="body" value="/WEB-INF/views/anonymous/register.jsp" />
+    </definition>
+
+    <definition name="error/general-error" extends="baseTemplate">
+        <put-attribute name="title" value="Error" />
+        <put-attribute name="body" value="/WEB-INF/views/error/general-error.jsp" />
+    </definition>
+
+    <definition name="general/main" extends="baseTemplate">
+        <put-attribute name="title" value="Main" />
+        <put-attribute name="body" value="/WEB-INF/views/general/main.jsp" />
+    </definition>
+
+    <definition name="user/profile" extends="baseTemplate">
+        <put-attribute name="title" value="Profile" />
+        <put-attribute name="body" value="/WEB-INF/views/user/profile.jsp" />
+    </definition>
+
+    <definition name="general/task" extends="baseTemplate">
+        <put-attribute name="title" value="Task" />
+        <put-attribute name="body" value="/WEB-INF/views/general/task.jsp" />
+    </definition>
+
+    <definition name="user/create_task" extends="baseTemplate">
+        <put-attribute name="title" value="Create Task" />
+        <put-attribute name="body" value="/WEB-INF/views/user/create_task.jsp" />
+    </definition>
+
+    <definition name="user/create_subproblem" extends="baseTemplate">
+        <put-attribute name="title" value="Create Subproblem" />
+        <put-attribute name="body" value="/WEB-INF/views/user/create_subproblem.jsp" />
+    </definition>
+
+    <definition name="user/tasks" extends="baseTemplate">
+        <put-attribute name="title" value="My Tasks" />
+        <put-attribute name="body" value="/WEB-INF/views/user/tasks.jsp" />
+    </definition>
+
+    <definition name="user/edit_task" extends="baseTemplate">
+        <put-attribute name="title" value="Edit Task" />
+        <put-attribute name="body" value="/WEB-INF/views/user/edit_task.jsp" />
+    </definition>
+
+</tiles-definitions>

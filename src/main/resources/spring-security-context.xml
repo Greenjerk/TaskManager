@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <http pattern="/css/**" security="none"/>
+    <http pattern="/login*" security="none"/>
+    <http pattern="/logout*" security="none"/>
+
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/anonymous/**" access="isAnonymous()"/>
+        <form-login login-page="/anonymous/login" default-target-url="/" always-use-default-target='true'
+                    authentication-failure-url="/loginfailed"/>
+        <logout logout-success-url="/logout"/>
+        <remember-me key="testKey" token-validity-seconds="2419200" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource"
+
+                               users-by-username-query="
+			      SELECT username, password, enabled
+			      FROM user WHERE username=?"
+
+                               authorities-by-username-query="
+			      SELECT u.username, u.authority FROM user u
+			      WHERE u.username =? "
+
+                    />
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>
