@@ -51,6 +51,7 @@
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
+
         <init-param>
             <param-name>forceEncoding</param-name>
             <param-value>true</param-value>
@@ -65,5 +66,12 @@
         <error-code>404</error-code>
         <location>/WEB-INF/views/error/general-error.jsp</location>
     </error-page>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
 
 </web-app>
