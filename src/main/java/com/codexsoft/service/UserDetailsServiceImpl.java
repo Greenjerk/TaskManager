@@ -1,4 +1,4 @@
-package com.codexsoft.service.impl;
+package com.codexsoft.service;
 
 import com.codexsoft.util.UserAuthorityUtils;
 import com.codexsoft.dao.UserDao;
@@ -44,11 +44,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
             return UserAuthorityUtils.createAuthorities(this);
-        }
-
-        @Override
-        public String getUsername() {
-            return getEmail();
         }
 
         @Override
