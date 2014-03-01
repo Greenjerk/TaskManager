@@ -18,6 +18,7 @@
     <task:annotation-driven/>
     <context:annotation-config/>
     <context:component-scan base-package="com.codexsoft.controller"/>
+    <context:component-scan base-package="com.codexsoft.service"/>
 
     <import resource="spring-datasource-config.xml"/>
 
@@ -38,6 +39,11 @@
             </list>
         </property>
     </bean>
+
+    <bean id="UserAuthenticationProvider"
+          class="com.codexsoft.authentication.UserAuthenticationProvider">
+
+          </bean>
 
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

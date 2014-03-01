@@ -22,18 +22,6 @@
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <jdbc-user-service data-source-ref="dataSource"
-
-                               users-by-username-query="
-			      SELECT username, password, enabled
-			      FROM user WHERE username=?"
-
-                               authorities-by-username-query="
-			      SELECT u.username, u.authority FROM user u
-			      WHERE u.username =? "
-
-                    />
-        </authentication-provider>
+        <authentication-provider ref="UserAuthenticationProvider"/>
     </authentication-manager>
 </beans:beans>
