@@ -13,8 +13,7 @@ public final class UserAuthorityUtils {
     private static final List<GrantedAuthority> USER_ROLES = AuthorityUtils.createAuthorityList("ROLE_USER");
 
     public static Collection<? extends GrantedAuthority> createAuthorities(User user) {
-        String authority = user.getAuthority();
-        if (authority.equals("ROLE_ADMIN")) {
+        if (user.getAuthority().equals("ROLE_ADMIN")) {
             return ADMIN_ROLES;
         }
         return USER_ROLES;

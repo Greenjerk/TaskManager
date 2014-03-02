@@ -11,6 +11,11 @@
     <http pattern="/login*" security="none"/>
     <http pattern="/logout*" security="none"/>
 
+
+    <beans:bean id="userAuthenticationProvider"
+                class="com.codexsoft.authentication.UserAuthenticationProvider"/>
+
+
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
@@ -18,10 +23,10 @@
         <form-login login-page="/anonymous/login" default-target-url="/" always-use-default-target='true'
                     authentication-failure-url="/loginfailed"/>
         <logout logout-success-url="/logout"/>
-        <remember-me key="testKey" token-validity-seconds="2419200" />
+        <remember-me  user-service-ref="userDetailsServiceImpl"/>
     </http>
 
     <authentication-manager>
-        <authentication-provider ref="UserAuthenticationProvider"/>
+        <authentication-provider ref="userAuthenticationProvider"/>
     </authentication-manager>
 </beans:beans>
