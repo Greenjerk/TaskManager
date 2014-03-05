@@ -8,7 +8,7 @@
         <li><a class="btn btn-primary btn-sm"
                style="margin-bottom: 10px"
                href="/user/task/new"><spring:message code="label.create"/></a></li>
-        <li><H2 style="margin-left: 3em"><spring:message code="label.tasks"/></H2></li>
+        <li><H2 style="margin-left: 3em"><spring:message code="label.alltasks"/></H2></li>
     </div>
 
     <br/>
@@ -32,9 +32,9 @@
             </a>
 
             <div>
-                <strong><spring:message code="label.users"/>:</strong>
-                <c:forEach var="user" items="${task.users}">
-                    <small>${user.username}</small>
+                <strong><spring:message code="label.subscribers"/>:</strong>
+                <c:forEach var="subscriber" items="${task.subscribers}">
+                    <small>${subscriber.username}</small>
                 </c:forEach>
                 <br/>
 

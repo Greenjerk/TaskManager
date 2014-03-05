@@ -1,12 +1,28 @@
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <div class="container">
+    <c:if test="${not empty taskList}">
+        <H2 style="margin-left: 5em"><spring:message code="label.found"/></H2>
+    </c:if>
+    <c:if test="${empty taskList}">
+        <H2 style="margin-left: 5em"><spring:message code="label.empty"/></H2>
+    </c:if>
 
-    <H2 style="margin-left: 5em"><spring:message code="label.tasks"/></H2>
+    <c:forEach var="task" items="${taskList}">
 
-    <c:forEach var="task" items="${tasks}">
+        <div class="pull-right" style="margin-right: 3em">
+            <div>
+                <small><strong><spring:message code="label.author"/>: ${task.author.username}</strong></small>
+            </div>
+            <div class="pull-left">
+                <img class="avatar_profile"
+                     src="<c:url value="/general/${task.author.username}/avatar"/>"
+                     width="105" height="105"/>
+            </div>
+
+        </div>
 
         <div class="form-narrow">
             <c:if test="${task.author.username == pageContext['request'].userPrincipal.name}">
@@ -29,27 +45,9 @@
                 <c:forEach var="subscriber" items="${task.subscribers}">
                     <small>${subscriber.username}</small>
                 </c:forEach>
-                <br/>
+
             </div>
         </div>
+
     </c:forEach>
-
 </div>
-
-</div>
-
-<script>
-    $(document).ready(function(){
-        $(document).click(function(){
-            var scrt = $(document).scrollTop();
-            $.cookies.set("scroll", scrt);
-        });
-    });
-
-    $(document).ready(function(){
-        if($.cookies.get("scroll")) {
-            var scrt = $.cookies.get("scroll");
-            $(document).scrollTop(scrt);
-        }
-    });
-</script>

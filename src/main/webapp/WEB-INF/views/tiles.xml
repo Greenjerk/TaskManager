@@ -11,6 +11,11 @@
 		<put-attribute name="footer" value="/WEB-INF/views/skeleton/footer.jsp" />
 	</definition>
 
+    <definition name="admin/administrator" extends="baseTemplate">
+        <put-attribute name="title" value="${label.home}" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/administrator.jsp" />
+    </definition>
+
 	<definition name="anonymous/login" extends="baseTemplate">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/views/anonymous/login.jsp" />
@@ -59,6 +64,11 @@
     <definition name="user/edit_task" extends="baseTemplate">
         <put-attribute name="title" value="Edit Task" />
         <put-attribute name="body" value="/WEB-INF/views/user/edit_task.jsp" />
+    </definition>
+
+    <definition name="general/search" extends="baseTemplate">
+        <put-attribute name="title" value="Search" />
+        <put-attribute name="body" value="/WEB-INF/views/general/search.jsp" />
     </definition>
 
 </tiles-definitions>

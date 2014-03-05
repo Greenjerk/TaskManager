@@ -44,8 +44,9 @@ public class TaskServiceImpl extends GenericManagerImpl<Task, Long>
         if(!inputUsers.isEmpty()){
            users.addAll(inputUsers);
         }
-        task.setUsers(users);
-        return taskDao.save(task).getId();
+        task.setSubscribers(users);
+        long id = taskDao.save(task).getId();
+        return id;
     }
 
     @Override
@@ -61,7 +62,7 @@ public class TaskServiceImpl extends GenericManagerImpl<Task, Long>
         if(!inputUsers.isEmpty()){
             users.addAll(inputUsers);
         }
-        task.setUsers(users);
+        task.setSubscribers(users);
         taskDao.save(task);
     }
 

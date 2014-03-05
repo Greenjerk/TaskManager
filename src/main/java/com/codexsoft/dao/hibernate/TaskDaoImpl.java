@@ -23,16 +23,10 @@ public class TaskDaoImpl extends GenericDaoImpl<Task, Long> implements TaskDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Task> getAll() {
-        List<Task> taskList = sessionFactory.getCurrentSession().createCriteria(Task.class).list();
-        return new ArrayList<Task>(new HashSet<Task>(taskList));
-    }
-
-    @Override
     public List getAllByUser(String username) {
         Criteria crit = getSession().createCriteria(Task.class, "task");
-        crit.createAlias("users", "u");  // Create alias for users
-        crit.add(Restrictions.like("u.username", username));
+        crit.createAlias("subscribers", "s");
+        crit.add(Restrictions.like("s.username", username));
         return crit.list();
     }
 

@@ -38,6 +38,10 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         if(!password.equals(token.getCredentials())) {
             throw new BadCredentialsException("Invalid username/password");
         }
+        Boolean enabled = user.isEnabled();
+        if(!enabled) {
+            throw  new BadCredentialsException("User block");
+        }
         Collection<? extends GrantedAuthority> authorities = UserAuthorityUtils.createAuthorities(user);
         return new UsernamePasswordAuthenticationToken(user, password, authorities);
     }

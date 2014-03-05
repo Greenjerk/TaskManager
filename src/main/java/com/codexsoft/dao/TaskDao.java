@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface TaskDao extends GenericDao<Task, Long> {
 
-    public List<Task> getAll();
     public List getAllByUser(String username);
 
 }

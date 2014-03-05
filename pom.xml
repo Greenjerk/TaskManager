@@ -12,6 +12,7 @@
         <aspectj.version>1.7.3</aspectj.version>
         <spring.version>3.2.0.RELEASE</spring.version>
         <hibernate.version>4.1.7.Final</hibernate.version>
+        <lucene.version>3.6.2</lucene.version>
         <mysql.version>5.1.22</mysql.version>
         <commons-dbcp.version>20030825.184428</commons-dbcp.version>
         <commons-pool.version>20030825.183949</commons-pool.version>
@@ -31,6 +32,10 @@
         <hibernate.format_sql>false</hibernate.format_sql>
         <hibernate.query.substitutions>true 1, false 0</hibernate.query.substitutions>
         <hibernate.default_batch_fetch_size>16</hibernate.default_batch_fetch_size>
+
+        <hibernate.search.default.directory_provider>filesystem</hibernate.search.default.directory_provider>
+        <hibernate.search.default.indexBase>${project.basedir}/index</hibernate.search.default.indexBase>
+        <hibernate.search.indexing_strategy>event</hibernate.search.indexing_strategy>
 
         <encoding>utf-8</encoding>
     </properties>
@@ -94,6 +99,43 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>4.3.1.Final</version>
+        </dependency>
+
+        <!-- lucene -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-misc</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-memory</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial</artifactId>
+            <version>${lucene.version}</version>
         </dependency>
 
         <!-- Tiles2 -->

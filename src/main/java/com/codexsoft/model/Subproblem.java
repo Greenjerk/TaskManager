@@ -1,18 +1,29 @@
 package com.codexsoft.model;
 
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.search.annotations.*;
+
 import javax.persistence.*;
 
 @Entity
+@Indexed
 public class Subproblem {
 
     @Id
+    @DocumentId
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO,
+            analyzer = @Analyzer(impl = StandardAnalyzer.class))
     private String title;
 
     @Column(length=7000, nullable = false)
+    @Field(index=Index.YES, analyze= Analyze.YES, store=Store.NO,
+            analyzer = @Analyzer(impl = StandardAnalyzer.class))
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)

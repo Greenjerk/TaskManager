@@ -6,6 +6,8 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -13,7 +15,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private long id;
 
     @Column(nullable = false)
@@ -43,6 +44,9 @@ public class User {
     @JoinColumn(name = "user_id")
     @Fetch(value = FetchMode.SUBSELECT)
     private Collection<Comment> comments = new ArrayList<Comment>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "subscribers", cascade = CascadeType.ALL)
+    private Set<Task> notes = new HashSet<Task>();
 
     @Override
     public String toString() {
@@ -119,5 +123,13 @@ public class User {
 
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
+    }
+
+    public Set<Task> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Set<Task> notes) {
+        this.notes = notes;
     }
 }

@@ -6,6 +6,10 @@
 
 
     <div id="header" class="list-inline">
+        <form method="post" action="/search" class="navbar-search pull-left" style="margin-left: 1em">
+            <input name="term" class="search-query" id="w-input-search-tag"
+                   placeholder="<spring:message code="label.search"/>"/>
+        </form>
 
         <li><a href="/"><spring:message code="label.home"/></a></li>
         <security:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN">
@@ -16,6 +20,9 @@
             <li><a href="/user/tasks"><spring:message code="label.tasks"/></a></li>
             <li><a href="/user/profile"><security:authentication property="principal.username"/></a></li>
             <li><a href="<c:url value="j_spring_security_logout"/>"><spring:message code="label.logout"/></a></li>
+        </security:authorize>
+        <security:authorize ifAnyGranted="ROLE_ADMIN">
+            <li><a href="/admin" class="badge"><spring:message code="label.administrator"/></a></li>
         </security:authorize>
 
         <div id="nav_lang" class="list-inline pull-right">

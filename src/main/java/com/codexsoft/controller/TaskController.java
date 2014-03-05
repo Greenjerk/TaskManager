@@ -104,9 +104,9 @@ public class TaskController {
         TaskForm form = new TaskForm();
         form.setDescription(task.getDescription());
         form.setTitle(task.getTitle());
-        String users = StringUtils.join(task.getUsers(), ',');
+        String subscribers = StringUtils.join(task.getSubscribers(), ',');
         mav.addObject("taskForm", form);
-        mav.addObject("users", users);
+        mav.addObject("users", subscribers);
         mav.addObject("taskId", taskId);
         mav.setViewName("user/edit_task");
         return mav;
