@@ -8,7 +8,8 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title><tiles:insertAttribute name="title" ignore="true"/></title>
+    <c:set var="titleKey"><tiles:getAsString name="titleKey"/></c:set>
+    <title><spring:message code="${titleKey}"/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" type="text/css"/>

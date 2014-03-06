@@ -17,7 +17,7 @@
             <li><a href="/anonymous/login"><spring:message code="label.login"/></a></li>
         </security:authorize>
         <security:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN">
-            <li><a href="/user/tasks"><spring:message code="label.tasks"/></a></li>
+            <li><a href="/user/my_tasks"><spring:message code="label.tasks"/></a></li>
             <li><a href="/user/profile"><security:authentication property="principal.username"/></a></li>
             <li><a href="<c:url value="j_spring_security_logout"/>"><spring:message code="label.logout"/></a></li>
         </security:authorize>

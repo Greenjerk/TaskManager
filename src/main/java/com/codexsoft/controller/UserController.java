@@ -32,13 +32,6 @@ public class UserController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "user/profile")
-    public ModelAndView profile(ModelAndView mav) {
-        mav.addObject("userForm", new UserForm());
-        mav.setViewName("user/profile");
-        return mav;
-    }
-
     @ResponseBody
     @RequestMapping(value = "user/profile/avatar", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] avatarUploadForm(Principal principal) throws IOException {
@@ -64,6 +57,17 @@ public class UserController {
         User user = userService.getUserByName(principal.getName());
         userService.setAvatar(user, file);
         mav.setViewName("redirect:/user/profile");
+        return mav;
+    }
+
+    @RequestMapping(value = "user/profile")
+    public ModelAndView profile(
+            ModelAndView mav, Principal principal) {
+        User user = userService.getUserByName(principal.getName());
+        UserForm userForm = new UserForm();
+        userForm.setEmail(user.getEmail());
+        mav.addObject("userForm", new UserForm());
+        mav.setViewName("user/profile");
         return mav;
     }
 
@@ -93,12 +97,12 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(value = "user/tasks")
+    @RequestMapping(value = "user/my_tasks")
     public ModelAndView home(ModelAndView mav,
                              Principal principal) {
         List<Task> userTasks = taskService.getAllByUser(principal.getName());
         mav.addObject("tasks", userTasks);
-        mav.setViewName("user/tasks");
+        mav.setViewName("user/my_tasks");
         return mav;
     }
 

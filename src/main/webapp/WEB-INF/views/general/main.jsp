@@ -10,7 +10,6 @@
                href="/user/task/new"><spring:message code="label.create"/></a></li>
         <li><H2 style="margin-left: 3em"><spring:message code="label.alltasks"/></H2></li>
     </div>
-
     <br/>
 
     <c:forEach var="task" items="${tasks}">
