@@ -29,6 +29,10 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
         return dao.getAll();
     }
 
+    public List<T> getAllDesc(String propertyName) {
+        return dao.getAllDesc(propertyName);
+    }
+
     public T get(PK id) {
         return dao.get(id);
     }

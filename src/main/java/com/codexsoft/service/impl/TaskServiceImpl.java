@@ -2,19 +2,16 @@ package com.codexsoft.service.impl;
 
 import com.codexsoft.dao.TaskDao;
 import com.codexsoft.form.TaskForm;
+import com.codexsoft.model.Comment;
 import com.codexsoft.model.Task;
 import com.codexsoft.model.User;
 import com.codexsoft.service.TaskService;
 import com.codexsoft.service.UserService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Transactional
 @Service
@@ -30,6 +27,15 @@ public class TaskServiceImpl extends GenericManagerImpl<Task, Long>
     public TaskServiceImpl(TaskDao taskDao) {
         super(taskDao);
         this.taskDao = taskDao;
+    }
+
+    @Override
+    public Task get(Long id) {
+        Task task = super.get(id);
+        List comments = task.getComments();
+        Collections.sort(comments, new Comp());
+        return task;
+
     }
 
     @Override
@@ -67,8 +73,16 @@ public class TaskServiceImpl extends GenericManagerImpl<Task, Long>
     }
 
     @Override
-    public List<Task> getAllByUser(String username) {
+    public List getAllByUser(String username) {
         return taskDao.getAllByUser(username);
+    }
+
+    class Comp implements Comparator<Comment> {
+
+        @Override
+        public int compare(Comment comment1, Comment comment2) {
+            return comment2.getLastUpdated().compareTo(comment1.getLastUpdated());
+        }
     }
 
 }

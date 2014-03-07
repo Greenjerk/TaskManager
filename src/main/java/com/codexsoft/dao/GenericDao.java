@@ -11,6 +11,8 @@ public interface GenericDao<T, PK extends Serializable> {
 
     List<T> getAll();
 
+    public List<T> getAllDesc(String propertyName);
+
     List<T> getAllDistinct();
 
     List<T> search(String searchTerm) throws SearchException;

@@ -7,6 +7,8 @@ public interface GenericManager<T, PK extends Serializable> {
 
     List<T> getAll();
 
+    public List<T> getAllDesc(String propertyName);
+
     T get(PK id);
 
     boolean exists(PK id);

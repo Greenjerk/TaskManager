@@ -13,10 +13,10 @@ class BaseEntity implements Serializable, TimeStamped {
     @Version
     Long version;
 
-    @Column(name = "createdDate", nullable = false, updatable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     Date createdDate;
 
-    @Column(name = "lastUpdated", nullable = false)
+    @Column(name = "last_updated", nullable = false)
     Date lastUpdated;
 
     @Override

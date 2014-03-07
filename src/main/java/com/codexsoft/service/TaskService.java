@@ -14,7 +14,7 @@ public interface TaskService extends GenericManager<Task, Long> {
 
     public void editTask(TaskForm taskForm, User author, long id);
 
-    public List<Task> getAllByUser(String username);
+    public List getAllByUser(String username);
 
 
 

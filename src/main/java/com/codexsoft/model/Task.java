@@ -37,12 +37,12 @@ public class Task extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     @Fetch(value = FetchMode.SUBSELECT)
-    private Collection<Subproblem> subproblems = new ArrayList<Subproblem>();
+    private List<Subproblem> subproblems = new ArrayList<Subproblem>();
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     @Fetch(value = FetchMode.SUBSELECT)
-    private Collection<Comment> comments = new ArrayList<Comment>();
+    private List<Comment> comments = new ArrayList<Comment>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
@@ -67,7 +67,7 @@ public class Task extends BaseEntity {
         return subproblems;
     }
 
-    public void setSubproblems(Collection<Subproblem> subproblems) {
+    public void setSubproblems(List<Subproblem> subproblems) {
         this.subproblems = subproblems;
     }
 
@@ -87,11 +87,11 @@ public class Task extends BaseEntity {
         this.author = author;
     }
 
-    public Collection<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Collection<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 

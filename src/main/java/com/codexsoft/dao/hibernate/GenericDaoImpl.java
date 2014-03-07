@@ -9,6 +9,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.util.Version;
 import org.hibernate.*;
+import org.hibernate.criterion.Order;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.hibernate.search.SearchException;
@@ -63,6 +64,12 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     public List<T> getAll() {
         Session sess = getSession();
         return sess.createCriteria(persistentClass).list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> getAllDesc(String propertyName) {
+        Session sess = getSession();
+        return sess.createCriteria(persistentClass).addOrder(Order.desc(propertyName)).list();
     }
 
     public List<T> getAllDistinct() {
