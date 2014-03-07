@@ -4,12 +4,14 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Indexed
-public class Subproblem {
+public class Subproblem extends BaseEntity {
 
     @Id
     @DocumentId

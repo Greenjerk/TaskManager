@@ -6,16 +6,15 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
 @Entity
 @Indexed
-public class Task {
+public class Task extends BaseEntity {
 
     @Id
     @DocumentId
