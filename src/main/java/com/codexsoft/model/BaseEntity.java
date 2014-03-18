@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @MappedSuperclass
-class BaseEntity implements Serializable, TimeStamped {
+public class BaseEntity implements Serializable, TimeStamped {
 
     @Version
     Long version;
